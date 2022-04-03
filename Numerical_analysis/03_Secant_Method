@@ -1,0 +1,17 @@
+%ingredients
+f = input('Enter your Function: ');        %@(x) 2^x -5*x + 2;
+x0 = input('Enter initial guess: ');       %0;
+x1 = input('Enter second guess: ');       %1;
+e = input('Enter tolerance: ');       %10^-4;
+n = input('Enter no of iteration: ');        %10;
+%processing
+for i = 1:n
+   x2 = (x0*f(x1)-x1*f(x0))/(f(x1)-f(x0));
+   fprintf('x%d = %.50f\n',i,x2)
+   if abs(x2-x1)<e
+       break
+   end
+   x0 = x1;
+   x1 = x2;
+    
+end
