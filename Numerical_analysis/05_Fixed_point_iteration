@@ -1,0 +1,15 @@
+%ingredients
+f = input('Enter your Function: ');        %@(x) (2^x+2)/5;
+x0 = input('Enter initial guess: ');       %0;
+e = input('Enter tolerance: ');       %10^-4;
+n = input('Enter no of iteration: ');        %10;
+%processing
+for i = 1:n
+   x1 = f(x0);
+   fprintf('x%d = %.4f\n',i,x1)
+   if abs(x1-x0)<e
+       break
+   end
+   x0 = x1;
+     
+end
