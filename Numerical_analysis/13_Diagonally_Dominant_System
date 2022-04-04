@@ -1,1 +1,31 @@
+%ingredients
+A = input('Enter coefficient matrix A: ');        %[1 2 3;2 3 1;1 1 9];  [5 2 1;1 6 3;1 1 9]
+R = sum(abs(A),2);
+D = abs(diag(A));
+W = R-D;
+Check = D>=W
+DD = all(Check)
+if DD==1
+B = input('Enter Source Vector B: ');        %[19;4;7];
+P = input('Enter initial Guess Vector: ');        %[0;0;0];
+n = input('Enter no of iterations: ');       %20
+e = input('Enter tolerance: ');   %0.0001
+N = length(B);
+X = zeros(N,1);
+for j=1:n
+   for i=1:N
+       X(i) = (B(i)/A(i,i)) - (A(i,[1:i-1,i+1:N])*P([1:i-1,i+1:N]))/A(i,i);   
+   end
+fprintf('Iteration no  %d\n',j)  
+X
+if abs(X-P)<e
+    break
+end
+P = X;
+end
+elseif DD==0
+    disp('Matrix is not diaganolly dominant')
+else
+    disp('input is not square matrix')
+end
 
