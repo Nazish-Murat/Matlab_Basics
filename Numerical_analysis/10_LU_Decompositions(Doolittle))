@@ -1,7 +1,7 @@
 %ingredients
 A = input('Enter your coefficient matrix: ');        %[10 3 1;3 10 2;1 2 10]; randi([1,10],8,8)
-B = input('Enter source vector: ');       %[19;29;35]; randi([1,10],8,1)
-N = length(B); % no of unknowns
+b = input('Enter source vector: ');       %[19;29;35]; randi([1,10],8,1)
+N = length(b); % no of unknowns
 L = zeros(N,N); 
 U = zeros(N,N); 
 for a = 1:N
