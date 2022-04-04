@@ -1,0 +1,21 @@
+%ingredients
+A = input('Enter your coefficient matrix: ');        %[10 3 1;3 10 2;1 2 10]; randi([1,10],8,8)
+b = input('Enter source vector: ');       %[19;29;35]; randi([1,10],8,1)
+N = length(b);      
+X = zeros(N,1); 
+d = det(A)     
+Aold = A
+% aug = [A b]
+% rref(Aug)                  row reduce echolon form
+if d~=0
+    for i = 1:N
+      A(:,i) = b
+      X(i) = det(A)/d
+      A = Aold
+         
+    end
+   
+else
+    deisp('Cramers rule not applicable')
+    X
+end
