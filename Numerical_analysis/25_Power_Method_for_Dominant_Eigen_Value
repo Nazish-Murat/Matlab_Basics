@@ -1,1 +1,19 @@
+A = input('Enter Matrix A: '); %  [1 2;2 1]
+v = input('Enter normalized initial guess vector: '); % [1;0]
+n = input('Enter number of iterations: ');  %10
+e = input('Enter Tolerance: ');  %0.0001
+v0 = v;
+for i=1:n
+    v = A*v0;
+    M = max(v);
+    v =v/M;
+    if abs(v-v0)<e;
+        break
+    end
+    v0 = v
+    fprintf('Iteration no  %.4f\n',i)
+    fprintf('Current eigen value is %.4f\n',M)
+    fprintf('Current eigen vector is %.4f\n',v)
+    
+end
 
