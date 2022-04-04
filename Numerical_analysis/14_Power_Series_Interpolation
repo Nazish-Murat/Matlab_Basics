@@ -1,1 +1,27 @@
+%ingredients
+X = input('Enter list of absicasa: ');        %[2;3;5;7]
+Y = input('Enter list of ordinates: ');        %[5;7;8;9]
+P0 = input('Enter the missing data point: ');       %4
+n = length(X);  % To calculate no of data points     
+
+%solving system of linear equations AU = B
+
+B = Y
+for i=1:n % for rows
+    for j=1:n % for columns
+        A(i,j) = X(i)^(j-1);
+         
+    end
+   
+end
+A
+U = A\B  %U = inv(A)*B
+P = flip(U)
+A = polyval(P,P0)
+x = linspace(X(1),X(n),100);
+y = polyval(P,x);
+plot(x,y,'r')
+hold on
+plot(X,Y,'o')
+
 
