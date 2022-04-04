@@ -1,1 +1,36 @@
+%%for one dependent variable
+
+f = input('Enter your function: ');     %@(t,y) -20*y + 7*exp(-0.5*t)
+t0 = input('Enter initial value of independent variable: ');  %0
+y0 = input('Enter initial value of dependent variable: ');   %5
+h = input('Enter step size: ');   %0.05
+tn = input('Enter point at which you want to evaluate solution: ')  %0.2
+n = (tn-t0)/h;
+t(1) = t0; y(1) = y0;
+for i=1:n
+    y(i+1) = y(i) + h*f(t(i),y(i));
+    t(i+1) = t0 + i*h;
+    fprintf('y(%.2f)=%.4f\n',t(i+1),y(i+1))
+end
+%%
+%for Two dependent variable
+
+f = input('Enter your 1st function: ');     %@(t,y,z) z 
+g = input('Enter your 2nd function: ');      %@(t,y,z) 0.05*z - 0.15*y
+t0 = input('Enter initial value of independent variable: ');  %0
+y0 = input('Enter initial value of 1st dependent variable: ');   %1
+z0 = input('Enter initial value of 2nd dependent variable: ');  %0
+h = input('Enter step size: ');   %0.01
+tn = input('Enter point at which you want to evaluate solution: ')  %1
+n = (tn-t0)/h;
+t(1) = t0; y(1) = y0; z(1) = z0;
+for i=1:n
+    y(i+1) = y(i) + h*f(t(i),y(i),z(i));
+    z(i+1) = z(i) + h*g(t(i),y(i),z(i));
+
+    t(i+1) = t0 + i*h;
+    fprintf('y(%.2f)=%.4f\n',t(i+1),y(i+1))
+    fprintf('z(%.2f)=%.4f\n',t(i+1),z(i+1))
+end
+
 
