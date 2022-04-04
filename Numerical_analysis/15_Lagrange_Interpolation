@@ -1,1 +1,32 @@
+%ingredients
+X = input('Enter list of absicasa: ');        %[2;3;5]
+Y = input('Enter list of ordinates: ');        %[5;7;8]
+P0 = input('Enter the point of approximation: ');
+n = length(X);  % To calculate no of data points     
+L = zeros(n,n);
+for i=1:n
+    V = 1;
+    for j=1:n
+        if i~=j
+            V = conv(V,poly(X(j)))/(X(i)-X(j));
+        end
+    end
+    L(i,:) = V*Y(i);
+end
+L
+P = sum(L);
+F = flip(P);
+disp('your polynomial is: ')
+for k=n:-1:2
+    fprintf('+(%.2fx^%d)',F(k),k-1)
+end
+ fprintf('+(%.2f)\n',F(1))   
+ 
+A = polyval(P,P0)
+fprintf('Approximate value at given data point is:%.4f ',A)
+x = linspace(X(1),X(n),100);
+y = polyval(P,x);
+plot(x,y,'r')
+hold on
+plot(X,Y,'o')
 
