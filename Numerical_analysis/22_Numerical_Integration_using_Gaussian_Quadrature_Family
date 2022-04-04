@@ -1,1 +1,26 @@
+f = input('Enter your function : ');     %@(x) (x^2)/(1+x^3) 
+a = input('Enter lower limit : ');  %0
+b = input('Enter upper limit : ');   %3
+g = input('Which gauss point formula : ');   %2 or 3....
+F = @(t) f(((b-a)*t + (b+a))/2);
+if g==2
+    w1 = 1; w2 = 1;
+    x1 = 1/sqrt(3) ; x2 = -1/sqrt(3);
+    G2 = ((b-a)/2)*(w1*F(x1) + w2*F(x2));
+    fprintf('Result using gauss 2 point formula is : %.4f\n',G2)
+elseif g==3
+    w1 = 5/9; w2 = 8/9; w3 = 5/9;
+    x1 = sqrt(3/5) ; x2 = 0; x3 = -sqrt(3/5);
+    G3 = ((b-a)/2)*(w1*F(x1) + w2*F(x2)+ w3*F(x3));
+    fprintf('Result using gauss 3 point formula is : %.4f\n',G3)    
+    
+elseif g==4
+    w1 = 0.3478548451; w2 = 0.3478548451; w3 = 0.6521451549; w4 = 0.6521451549;
+    x1 = 0.8611363116 ; x2 = -0.8611363116; x3 = 0.3399810436; x3 = -0.3399810436;
+    G3 = ((b-a)/2)*(w1*F(x1) + w2*F(x2)+ w3*F(x3)+ w4*F(x4));
+    fprintf('Result using gauss 4 point formula is : %.4f\n',G3) 
+else
+  disp('Formula not available')  
+end
+
 
