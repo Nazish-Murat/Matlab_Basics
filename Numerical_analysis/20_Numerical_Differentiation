@@ -1,1 +1,31 @@
+g = input('Enter your function e.g @(x) sin(x): ','s');     %@(x) x^2 + 5*x  
+f = str2func(g);
+h = input('Enter step size: ');  %1
+d = input('which derivative you want to compute: ');   % 1
+x = input('At which point you want to approximate derivative: ');  %6
+if d==1
+    Fd2 = (f(x+h)-f(x))/h;    %forward 2-point
+    Bd2 = (f(x)-f(x-h))/h;      %backward 2-point
+    Cd2 = (f(x+h)-f(x-h))/(2*h);        %Central 2-point
+    Fd3 = (4*f(x+h)-f(x+2*h)-3*f(x))/(2*h);     %forward 3-point
+    Bd3 = (-4*f(x-h)+f(x-2*h)+3*f(x))/(2*h);        %backward 3-point
+    disp('Results using 2-point formulas')
+    fprintf('Forward: %.4f\n',Fd2)
+    fprintf('Backward: %.4f\n',Bd2)
+    fprintf('Central: %.4f\n',Cd2)
+    disp('Results using 3-point formulas')
+    fprintf('Forward: %.4f\n',Fd3)
+    fprintf('Backward: %.4f\n',Bd3)    
+elseif d==2
+    Fd3 = (f(x+2*h)-2*f(x+h)+f(x))/(h^2);     %forward 3-point 
+    Bd3 = (f(x-2*h)-2*f(x-h)+f(x))/(h^2);       %backward 3-point
+    Cd3 = (f(x+h)-2*f(x)+f(x-h))/(h^2);         %central 3-point
+    disp('Results using 3-point formulas')
+    fprintf('Forward: %.4f\n',Fd3)
+    fprintf('Backward: %.4f\n',Bd3) 
+    fprintf('Central: %.4f\n',Cd3)
+    
+else
+  disp('**Formula not available**') 
+end
 
