@@ -1,1 +1,35 @@
+%ingredients
+format rational
+X = input('Enter list of absicasa: ');        %[2;3;4;5;6]
+Y = input('Enter list of ordinates: ');        %[4;7;8;11;15]
+P0 = input('Enter the point of approximation: ');
+n = length(X);  % To calculate no of data points   
+h = X(2) - X(1);
+F = zeros(n,n);
+F(:,1) = Y;
+
+for j=2:n
+    for  i=j:n
+        F(i,j) = F(i,j-1) - F(i-1,j-1);
+    end
+end
+F
+C = F(n,n);
+for k=n-1:-1:1
+    p = poly(X(1))/h;
+    p(2) = p(2) - (k-1);
+    C = conv(C,p)/k;
+    m = length(C);
+    C(m) = C(m) + F(k,k);
+    
+end
+C
+A = polyval(C,p0);
+fprintf('Approximate value at given data point is:%.4f ',A)
+x = linspace(X(1),X(n),100);
+y = polyval(C,x);
+plot(x,y,'r')
+hold on
+plot(X,Y,'o')
+
 
