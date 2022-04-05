@@ -1,1 +1,31 @@
+%% Ball Vertical 
+% Display location of ball hit vertically at every 0.1s
+clear all; close all; clc;
+v0 = 20;
+g = 9.8;
+y = 0;
+t = 0;
+time = 0;
+location = 0;
+while (y>=0)
+    disp(['At t = ',num2str(t),',location = ',num2str(y)]);
+    t = t + 0.1;
+    y = v0*t - g*t^2/2;
+    time = [time;t];
+    location = [location;y];
+end
+   
+%plot(time,location);
+xlabel('time(s)');
+ylabel('location(m)');
+%plot(time,location,'--r');
+%plot(time,location,'-.g');
+plot(time,location,'-bo');
+%x = [0:01:5];
+x = [0:0.1:5];
+plot(x,sin(x),'-b',x,cos(x),'--r')
+y = [sin(x);cos(x)];
+size(y)
+hold on
+plot(x,sin(x)+cos(x))
 
