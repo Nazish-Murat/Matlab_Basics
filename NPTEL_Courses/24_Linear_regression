@@ -1,1 +1,43 @@
+clear all; close all; clc;
+%%  
+%introduction to linear regression
+x = [0.8; 1.4; 2.7; 3.8; 4.8; 4.9];
+y = [0.69; 1.0; 2.02; 2.39; 2.34; 2.83];
+N = length(x);
+
+%% calculate linear regression and plot
+A = [N,sum(x);sum(x),sum(x.*x)];
+b = [sum(y);sum(x.*y)];
+phi = inv(A)*b;
+plot(x,y,'bs',[0.5 5],phi(1)+phi(2)*[0.5 5],'--r');
+
+%% calculate Divided diffrences and plot
+xint = 0.8:0.01:4.9;
+yint = zeros(size(xint));
+for i = 1:length(xint)
+   yint(i) = ndd(x,y,xint(i)); 
+end
+
+hold on
+plot(xint,yint,'--k')
+
+
+function yint = ndd(x,y,xint)
+N = length(x);
+%% Divided Diffrence Coefficients
+D = zeros(N);
+colD = y;
+D(:,1) = colD;
+for i=2:N
+   colD = diff(colD)./(x(i:end)-x(1:N+1-i));
+   D(1:N+1-i,i) = colD;
+end
+coef = D(1,:);
+%%interpolate
+xq = [1; cumprod(xint-x(1:N-1))];
+yint = coef*xq;
+
+
+end
+
 
