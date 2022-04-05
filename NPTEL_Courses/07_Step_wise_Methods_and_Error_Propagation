@@ -1,1 +1,25 @@
+function expVal = multiStepExp(a,h) 
+%%  
+% To calculate e^(0.1) using multiple steps of Taylor's Series
+clear all; close all; clc;
+N = a/h;
+%% Multi-step computation
+expVal = 1;
+for i=1:N
+    expVal = expVal*(1+h);
+end
+
+a = 0.1;
+h = 0.1;
+trueVal = exp(a);
+%% Computing using multi-step exp Method
+for i=1:3
+    h = 10^(-i);
+    expVal = multiStepExp(a,h);
+    err = abs(trueVal-expVal)
+    hAll(i) = h;
+    errAll(i) = err;
+
+%% plot error vs. step-size
+loglog(hALL,errAll,'-bo')
 
