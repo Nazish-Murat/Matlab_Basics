@@ -1,1 +1,41 @@
+%%  
+% Numerical diffrentiation practice problem 
+%f(x) = 2 = x + ln(x)
+
+clear all; close all; clc;
+
+a = 1;
+h = 1e-4;
+trueVal1 = 1/a-1;
+trueVal2 = 1/a^2;
+
+%% Numerical Derivatives
+x = a+h;
+f1 = 2-x+log(x);
+x = a;
+f2 = 2-x+log(x);
+x = a-h;
+f3 = 2-x+log(x);
+numDiff1 = (f1-f3)/(2*h);
+numDiff2 = (f1-2*f2+f3)/h^2;
+err1 = abs(trueVal1 - numDiff1);
+err2 = abs(trueVal2 - numDiff2);
+
+%% TO calculate f'(x) for an Arrhenius reaction expression  (Worked Example)
+%r = k*e^(-E/RT)*C^1.25
+% constants
+k = 1000;
+EbyR = 2500;
+C = 1.0;
+T = 600;
+
+%% Diffrentiation
+r = k*exp(-EbyR/T)*C^1.25;
+trueVal = k*(-EbyR/T^2);
+h = 1.0e-4;
+r1 = k*exp(-EbyR/(T+h))*C^1.25;
+r2 = k*exp(-EbyR/(T-h))*C^1.25;
+numVal = (r1-r2)/(2*h);
+
+err = abs(trueVal-numVal);
 
