@@ -1,0 +1,32 @@
+
+clc;clear all;close all
+a = [1,2,3]
+b = eye(3)  %identity matrix
+c = [1,2,3;1,2,3;1,2,3]
+D = [a;b]  %concatenate
+E = horzcat(c,b)
+F = [a', c]
+F(2, 1)  % row 2 column 1
+F(3, 1:3)  % row 3 column 1 til 3
+size(F)  % num of rows  num of column i.e 3 4
+1:5  %colon notation create row vector
+z = [1:3:5]  %step size 3
+y = [2:1]   %empty matrix
+p = 3; q = 3;
+F(p,q)
+%%  Array Building Function
+m = 3; n = 4;
+a = ones(m,n);
+b = zeros(m,n);
+c = eye(m,n);
+d = diag(m);
+e = diag(m,n);
+f = rand(m,n);
+g = randn(m,n);
+h = magic(m);
+i = hilb(m);
+
+%% Array Operations
+                %Scalar Operations
+%log,  exp,  power,  sqrt,  sin,  cos,  tan,  asin,  acos,  atan,  rem,  round,  ceil,  floor
+%logm,expm, mpower, sqrtm, sum,prod,cumsum,cumprod,min,max,mean,std,length,size,eig
