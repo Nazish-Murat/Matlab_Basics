@@ -1,0 +1,32 @@
+%%
+%fibonacci Series using for Loop
+clc;clear all;close all
+
+n = 10;
+fibo = [1 1];
+for i=3:n
+   fibo(i) = fibo(i-1)+fibo(i-2) 
+end
+
+%% fibonacci Series until 200 using while Loop
+fibo = [1 1];
+while (fibo(end)<400)
+   fiboNew = fibo(end) + fibo(end-1);
+   fibo = [fibo fiboNew]
+end
+fibo = fibo(1:end-1); 
+
+
+%% Ball Vertical 
+% Display location of ball hit vertically at every 0.1s
+v0 = 20;
+g = 9.8;
+y = 0;
+t = 0;
+
+while (y>=0)
+   t = t+0.1;
+   y = v0*t-g*t^2/2;
+   disp(['At t = ',num2str(t),',location = ',num2str(y)]);
+    end
+
