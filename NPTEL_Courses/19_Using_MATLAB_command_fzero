@@ -1,1 +1,39 @@
+clear all; close all; clc;
+%%  
+%Code file to use Bisection method
+% To solve 2-x+log(x) = 0
+%% initial guesses
+
+xl = 1e-5;
+xu = 1;
+
+fl = fun4Bisec(xl);
+fu = fun4Bisec(xu);
+%check if sign of fl and fu are diffrent
+if (fl*fu>0)
+   error('Initial guesses should have diffrent sign'); 
+end 
+    
+
+%% iterative solution using bisection rule
+maxIter = 25;
+for i=1:maxIter
+    err = abs(xl-xu);
+    xNew= (xl+xu)/2
+    fNew = 2-xNew+log(xNew);
+    if(fl*fNew>0)
+        xl = xNew;
+        fl = fNew;
+    else
+        xu = xNew;
+        fu = fNew;
+    end
+end
+
+function fval = fun4Bisec(x)
+fval = 2-x +log(x)
+end
+
+
+
 
