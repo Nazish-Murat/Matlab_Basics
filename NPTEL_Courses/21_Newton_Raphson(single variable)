@@ -1,1 +1,24 @@
+clear all; close all; clc;
+%%  
+%Code file to use Fixed point Iteration for solving nonlinear equations
+% f(x)= 2-x+ln(x)
+%% initial guesses
+x0 = 2;
+maxIter = 50;
+tolX = 1e-4;
+
+
+%% Computation using Fixed point Iteration
+x = x0;
+xold = x0;
+for i=1:maxIter
+    x = 2+log(x);
+    err(i) = abs(x-xold);
+    xold = x;
+    if(err(i)<tolX)
+       break; 
+    end
+    
+end
+
 
