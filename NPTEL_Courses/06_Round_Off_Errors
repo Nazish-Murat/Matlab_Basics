@@ -1,1 +1,45 @@
+%%  
+% To calculate numerical derivative of atan(x)
+clear all; close all; clc;
+a = 1;
+trueVal = 1/(1+a^2);
+h = 0.01;
+%% Derivatives of single variable
+approxVal_1 = ( atan(a+h) - atan(a))/h;
+err = abs(trueVal - approxVal_1);
+
+h = 0.001;
+approxVal_2 = ( atan(a+h) - atan(a))/h;
+err = abs(trueVal - approxVal_2);
+
+h = 0.0001;
+approxVal_3 = ( atan(a+h) - atan(a))/h;
+err = abs(trueVal - approxVal_3);
+
+
+%% short way
+for i=2:2:14
+    h = 10^(-i);
+    approxVal = ( atan(a+h) - atan(a))/h;
+    err = abs(trueVal - approxVal)
+    hAll(i/2) = h;
+    errAll(i/2) = err;
+end
+%% plotting error vs. step size
+loglog(hAll,errAll);
+
+
+%% Calculte sqrt(2) using Heron algorithm
+x = 0.5;
+atol = 1.0e-5;
+err = 1;
+% Iterative Computation
+while (err>atol)
+   xNew = 1/2*(x+2/x);
+   err = abs(x-xNew);
+   x = xNew;
+end
+
+
+
 
