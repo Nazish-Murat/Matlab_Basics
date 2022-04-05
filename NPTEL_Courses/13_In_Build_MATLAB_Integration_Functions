@@ -1,1 +1,15 @@
+%%  
+% To calculate numerical integral using single application of
+% Newton-Cotes(In_build Functions)
+% Formulae
+%f(x) = 2 - x + ln(x)
+clear all; close all; clc;
+%% Problem Setup
+a = 1;
+b = 2
+n = 200;
+h = (b-a)/n;
+xVec = a:h:b;
+fVec = myFunInt(xVec);
+I = trapz(xVec,fVec)
 
