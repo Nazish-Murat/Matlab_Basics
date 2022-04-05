@@ -1,1 +1,67 @@
+%%  
+% To find partial derivatives in two variables 
+%f(x) = sin(x1)*exp(-x2)
+
+clear all; close all; clc;
+a = [0.5;1];
+h = [1e-6; 1e-6];
+trueVal = [cos(a(1))*exp(-a(2)), sin(a(1))*exp(-a(2))];
+
+%% Partial Derivative w.r.t first variable
+x = a;
+x(1) = a(1)+h(1);
+f1 = sin(x(1))*exp(-x(2));
+x(1) = a(1)-h(1);
+f2 = sin(x(1))*exp(-x(2));
+numDiff(1) = (f1-f2)/(2*h(1));
+
+%% Partial Derivative w.r.t second variable
+temp_h = [0;h(2)];
+f1 = myFunM3(a+temp_h);
+f2 = myFunM3(a-temp_h);
+numDiff(2) = (f1-f2)/(2*h(2));
+
+
+%% Display Results
+err_1 = abs(trueVal-numDiff(1));
+disp(['Numerical Derivative: ',num2str(numDiff(1))]);
+err_2 = abs(trueVal-numDiff(2));
+disp(['Numerical Derivative: ',num2str(numDiff(2))]);
+
+%%
+function fval = myFunM3(x)
+fval = sin(x(1))*exp(-x(2));
+end
+
+
+%% TO calculate f'(x) for an Arrhenius reaction expression  (Worked Example)
+%r = k*e^(-E/RT)*C^1.25
+% constants
+k = 1000;
+EbyR = 2500;
+C = 1.0;
+T = 600;
+
+%% Partial Diffrentiation
+h = [1.0e-6*T; 1.0e-6];
+x1 = [T+h(1); C];
+x2 = [T-h(1); C];
+numDiff(1) = (myRate(x1)-myRate(x2))/h(1);
+x1 = [T; C+h(2)];
+x2 = [T; C-h(2)];
+numDiff(2) = (myRate(x1)-myRate(x2))/h(2);
+
+%% Display Results
+disp(['Partial Derivatives of r: ',num2str(numDiff)])
+
+function r = myRate(x)
+%current value of T and C
+T = x(1);
+C = x(2);
+% constant
+k = 1000;
+EbyR = 2500;
+% Rate calculation
+r = k*exp(-EbyR/T)*C^1.25;
+end
 
