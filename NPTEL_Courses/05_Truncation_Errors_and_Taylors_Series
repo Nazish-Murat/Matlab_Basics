@@ -1,1 +1,30 @@
+%%  
+% Maclaurin Series for exp(0.01)
+clear all; close all; clc;
+
+n = 3;
+aAll = [0.1 0.05 0.02 0.01];
+vec = [1:n];
+err = [];
+for i=1:length(aAll)
+    a = aAll(i);
+    terms = a.^vec ./ cumprod(vec);
+    expVal = 1 + cumsum(terms);
+    trueVal = exp(a);
+    err = [err;abs(trueVal - expVal)];    
+end
+
+%%
+%plot(aAll,err);
+%xlabel('step size');
+%ylabel('error');
+%hold on
+loglog(aAll,err);
+xlabel('step size');
+ylabel('error');
+
+%% plotting
+figure(2)  % or figure(gcf)
+plot(log10(aAll),log10(err));
+shg  % makes the current figure visible and places it in front of all other figures on the screen
 
