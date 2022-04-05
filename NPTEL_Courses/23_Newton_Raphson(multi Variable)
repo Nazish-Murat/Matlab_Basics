@@ -1,1 +1,45 @@
+clear all; close all; clc;
+%%  
+%Code file to solve sequence of nonlinear equation using Newton Raphson
+% f(x)= 2-x+ln(x)
+%% initial guesses
+X0 = [1;1;1];
+maxIter = 50;
+tolX = 1e-6;
+
+
+%% Computation using Fixed point Iteration
+X = X0;
+Xold = X0;
+for i=1:maxIter
+    [f,j] = lorenzSysNR(X);
+    X = X-inv(j)*f;
+    err(:,i) = abs(X-Xold);
+    Xold = X;
+    if(err(i)<tolX)
+       break; 
+    end
+    
+end
+
+
+
+
+function [fval,jac] = lorenzSysNR(X)
+%Define three variable
+x = X(1);
+y = X(2);
+z = X(3);
+%Define f(x)
+fval(1,1) = x-y;
+fval(2,1) = 2*x-x*z-y;
+fval(3,1) = x*y-3*z;
+
+% Define Jacobian
+jac = [1, -1, 0;
+    2-z, -1, -x;
+    y, x, -3];
+
+
+end
 
