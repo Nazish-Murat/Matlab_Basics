@@ -1,0 +1,9 @@
+
+f = input('Enter your Function: ');
+a = input('Enter left side of interval: ');
+b = input('Enter right side of interval: ');
+for i = a:b
+    if f(i)*f(i+1)<0
+        fprintf('Roots lies in [%d, %d]\n',i,i+1)
+    end
+end
