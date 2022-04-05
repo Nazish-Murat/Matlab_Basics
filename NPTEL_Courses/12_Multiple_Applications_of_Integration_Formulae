@@ -1,1 +1,41 @@
+%%  
+% To calculate numerical integral using single application of Newton-Cotes
+% Formulae
+%f(x) = 2 - x + ln(x)
+clear all; close all; clc;
+%% Problem Setup
+a = 1;
+b = 2
+trueVal = (b-b^2/2+b*log(b))-(a-a^2/2+a*log(a));
+n = 200;
+%% Trapezoidal Rule (Multiple application)
+h = (b-a)/n;
+xVec = a:h:b;
+fVec = myFunInt(xVec);
+%for multiple intervals
+Iinterval = zeros(n,1);
+ for i=1:n
+     Iinterval(i) = h/2*(fVec(i)+fVec(i+1));
+ end
+I_trap = sum(Iinterval);     
+err1 = abs(trueVal-I_trap);
+%Using the direct formula
+I_trap2 = h/2*(fVec(1) + 2*sum(fVec(2:n)) + fVec(n+1));
+err2 = abs(trueVal-I_trap2);
+
+
+
+%% Display Results
+disp(I_trap);
+disp(['For h= ',num2str(h),' ==> ','Error= ',num2str(err1)]);
+disp(I_trap2);
+disp(['For h= ',num2str(h),' ==> ','Error= ',num2str(err2)]);
+
+
+
+%%
+function fval = myFunInt(x)
+fval = 2-x+log(x);
+end
+
 
