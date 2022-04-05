@@ -37,6 +37,6 @@ ylabel('Temprature')
 
 figure(2)
 plot(t,U(:,(N+1)/2))  %plot of t vs U at x=centre
-title('t vs U at t=0.05')
+title('t vs U at x=0.05')
 xlabel('Time')
 ylabel('Temprature')
