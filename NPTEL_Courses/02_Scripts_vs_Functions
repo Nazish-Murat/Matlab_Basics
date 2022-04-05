@@ -1,0 +1,15 @@
+function result = myFunc(n,x)
+C = [1];
+vec = [1:n];
+C = [C, 1./vec];
+a = [1, x.^vec];
+result = sum(C.*a);
+end
+
+%% Function 
+
+
+Use Scripts when you want to 
+    ~ make small calculations(e.g., factorial, plotting, basic computing etc)
+Use Functions when you want to 
+    ~ calculate values as a function of variavle
