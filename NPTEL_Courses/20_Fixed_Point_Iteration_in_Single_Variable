@@ -1,1 +1,28 @@
+clear all; close all; clc;
+%%  
+%Code file to use Fixed point Iteration
+%case-1: g(x)=2+ln(x) 
+% case-2: g(x)= exp(x-2)
+%% initial guesses
+x0 = 0.1;
+maxIter = 50;
+tolX = 1e-4;
+
+
+%% Computation using Fixed point Iteration
+x = x0;
+xold = x0;
+for i=1:maxIter
+    x = exp(x-2);
+    err = abs(x-xold);
+    xold = x;
+    if(err<tolX)
+       break; 
+    end
+    
+end
+
+
+
+
 
