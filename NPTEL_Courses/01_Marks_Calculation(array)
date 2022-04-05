@@ -1,0 +1,29 @@
+%%
+clc;clear all;close all
+allMarks = [24 44 36;
+    52 57 68;
+    66 53 69;
+    85 40 86;
+    15 47 25;
+    79 72 82];
+mechMarks = [36 76 73 72 28 91];
+
+%%   Diffrent operations
+
+allMarks = [allMarks, mechMarks'*0.5]; % updating mark list
+
+%Extracting and summing Nazish Marks
+NazishMarks = allMarks(3,:);
+totalNazishMarks = sum(NazishMarks);
+
+% Average in each subject
+avgMarks = mean(allMarks);
+
+%sum of each student's marks
+totalMarks = sum(allMarks, 2);
+
+%Scaling marks
+scaleVector = [0.1,0.1,0.1,0.2];
+scaledMarks = allMarks*diag(scaleVector);
+
+
