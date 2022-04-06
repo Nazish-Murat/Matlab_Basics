@@ -1,1 +1,43 @@
+clear all; close all; clc;
+%%  Solving ODE-IVP using RK-2 Heun's Method
+% y' = -2ty
+% y(0) = 1
+t0 = 0;
+y0 = 1;
+tEnd = 5;
+h = 0.1;
+N = (tEnd-t0)/h;
+
+%% initialization 
+T = [t0:h:tEnd]';
+Y = zeros(N+1,1);
+Y(1) = y0;
+
+%% RK-2 Mid POint Method
+for i=1:N
+   k1 = -2*T(i)*Y(i);
+   tNew = T(i)+h/2;
+   yNew = Y(i)+h*k1/2;
+   k2 = -2*tNew*yNew;
+   Y(i+1) = Y(i) + h*k2;
+    
+end
+
+%%
+% %% Heun's Method
+% for i=1:N
+%    k1 = -2*T(i)*Y(i);
+%    tNew = T(i)+h;
+%    yNew = Y(i)+h*k1;
+%    k2 = -2*tNew*yNew;
+%    Y(i+1) = Y(i) + h/2*(k1+k2);
+%     
+% end
+
+%% plotting results and obtaining errors
+
+plot(T,Y);
+Ytrue = exp(-T.^2);
+ERR = abs(Ytrue-Y);
+
 
