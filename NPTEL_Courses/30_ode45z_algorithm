@@ -1,1 +1,37 @@
+clear all; close all; clc;
+%% SOlve plug flow reactor simulation
+C0 = 0;
+V0 = 1;
+Vend = [1, 5, 10];
+VSpan = [V0 Vend]
+% Solving ODE-IVP using MATLAB ODE45
+[VSol,CSol] = ode45(@(V,C) pfrFun(V,C), VSpan, C0);
+
+function dC = pfrFun(V,C)
+dC = -0.5*C^1.25;
+end
+
+
+% 
+% %%  Solving ODE-IVP using MATLAB ODE45
+% % y' = -2ty
+% % y(0) = 1
+% t0 = 0;
+% y0 = 1;
+% tEnd = 5;
+% 
+% 
+% %% Solving Using ODE45
+% [tSol,ySol] = ode45(@(t,y) firstODEfun(t,y), [t0 tEnd], y0);
+% 
+% %% plotting results and obtaining errors
+% 
+% plot(tSol,ySol);
+% 
+% function dy = firstODEfun(matlab,course)
+% dy = -2*matlab*course
+% end
+
+
+
 
