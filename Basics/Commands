@@ -1,0 +1,1 @@
+ publish('file_name')   % publishing matlab file as HTML
