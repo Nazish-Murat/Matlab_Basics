@@ -1,0 +1,36 @@
+%% Function
+ clear all; close all; clc
+num_roots(1,21,3)
+[m, b] = quad_tangent(2,1,3,5)
+v = [15 15 14 10 2]
+quiz_grade(v)
+ function num = num_roots(a,b,c)
+ discriminant = b^2-4*a*c;
+ if discriminant > 0
+     num = 2;
+ elseif discriminant< 0
+     num = 0;
+ else
+     num = 1;
+ end
+     
+ end
+ 
+ 
+ %%   
+ function [m, yint] = quad_tangent(a,b,c,x)
+ y = [a b c];
+ yprime = [2*a b];
+ m = polyval(yprime, x);
+ ycoord = polyval(y, x);
+ yint = -m*x + ycoord;
+ 
+ end
+ 
+ %% Grade function
+ function total = quiz_grade(grades)
+ average = mean(grades);
+ grades = sort(grades);
+ grades(1) = average;
+ total = sum(grades);
+  end
