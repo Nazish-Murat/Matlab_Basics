@@ -1,0 +1,17 @@
+%% input,menu, disp
+% calculate the average of three test
+ clear all; close all; clc
+ 
+ test1 = input('Enter Test one -->  ')
+ test2 = input('Enter Test two -->  ')
+ test3 = input('Enter Test three -->  ')
+average = (test1+test2+test3)/3
+% Input
+name = input('Enter your name --> ','s')  % taking input
+menu_ = menu('Selcet your course', 'Calculus', 'Linear Algebra', 'MATLAB') % shows menu to select option
+
+% Outout
+a = 10;
+disp(a)   %we can not format and even hard to combine variables
+disp(test1,test2,test3)   % error
+ 
