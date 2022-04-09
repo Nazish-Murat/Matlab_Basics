@@ -1,0 +1,41 @@
+%% Subplots
+ clear all; close all; clc
+ 
+%% Define the x variable
+ x = linspace(0, 2*pi);
+
+ %% Create first plot
+ subplot(3,2,1)
+ plot(x, sin(x), '-r', 'LineWidth', 3)
+ axis([0 2*pi -1 1])
+ title(' y = sin(x)')
+ 
+ %% Create second plot
+ subplot(3,2,2)
+ plot(x, sin(2*x), '-r', 'LineWidth', 3)
+ axis([0 2*pi -1 1])
+ title(' y = sin(x)')
+ 
+ %% Create third plot
+ subplot(3,2,3)
+ plot(x, 2*sin(x*2), '-r', 'LineWidth', 3)
+ axis([0 2*pi -1 1])
+ title(' y = sin(x)')
+ 
+ %% Create fourth plot
+subplot(3,2,4)
+ plot(x, sin(x), '-r', 'LineWidth', 3)
+ axis([0 2*pi -1 1])
+ title(' y = sin(x)')
+ 
+%% Create fifth plot
+subplot(3,2,5)
+ plot(x, sin(x+pi/2), '-r', 'LineWidth', 3)
+ axis([0 2*pi -1 1])
+ title(' y = sin(x)')
+ 
+ %% Create sixth plot
+subplot(3,2,6)
+ plot(x, sin(x-pi/2), '-r', 'LineWidth', 3)
+ axis([0 2*pi -1 1])
+ title(' y = sin(x)')
