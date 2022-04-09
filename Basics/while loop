@@ -1,0 +1,25 @@
+%% while loop
+clear all; close all; clc
+
+% generate a random integer(using randi) betweeb 0 and 10
+magic_number = randi([1,10])
+
+% Ask the user to guess the number
+fprintf('I''m thinkg of a whole number between 1 and 10. \n');
+guess = input('Guess a number: ');
+
+% while guess ~= magic_number
+%     fprintf('Sorry, that guess was wrong. \n');
+%     guess = input('Guess a number once more: ');
+% end
+% fprintf('Congratulations!');
+%% stoping repeating
+while guess ~= magic_number
+    if guess < magic_number
+      fprintf('The guess was too low. \n');
+    else
+      fprintf('The guess was too high. \n');  
+    end
+    guess = input('Guess a number once more: ');
+end
+fprintf('Congratulations!');
