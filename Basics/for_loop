@@ -1,0 +1,26 @@
+%% For Loop
+ clear all; close all; clc
+a = rand(11,4)   % random matrix 11 rows 4 columns
+a_re = 10*(0:10)'
+a(:,1) = a_re
+hold on
+for i=2:1:4
+    plot(a(:,1),a(:,i),'--bo')
+end
+
+%% Subplot loop  
+x = 0:0.01:2*pi;
+for i=1:1:3
+    subplot(1,3,i)
+    plot(x,sin(i*x));
+end
+
+%% for loop for creating values at s and y
+x = linspace(0,5,1000);
+y = x.*cos(x);
+plot(x,y,'--b');
+hold on
+for i=100:100:1000
+    plot(x(i),y(i),'ks','MarkerFaceColor','k')
+end
+
