@@ -1,5 +1,24 @@
 %% For Loop
  clear all; close all; clc
+v = input('Please enter a vector --> ');
+sum = 0;
+for i=1:1:length(v)
+    sum = sum + (v(i))^2;
+end
+
+%% Creating v vector containg all integers less than or 
+% equal to N that are prime number
+N = input('Please enter a positive integer --> ');
+primes = [];
+for i=2:1:N
+    if isprime(i)
+        primes = [primes i];
+    end   
+end
+
+%% For Loop- subplot
+
+ clear all; close all; clc
 a = rand(11,4)   % random matrix 11 rows 4 columns
 a_re = 10*(0:10)'
 a(:,1) = a_re
