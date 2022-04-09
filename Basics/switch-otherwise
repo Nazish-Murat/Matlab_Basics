@@ -1,0 +1,11 @@
+%% Switch-case-otherwise
+
+letter = input("Enter in a lower case letter > ",'s');
+switch letter
+    case {'a','e','i','o','u'}
+     fprintf('The letter is vowel.\n');   
+    case {'y'}
+      fprintf('The letter is "y".\n');  
+    otherwise 
+       fprintf('The letter is consonant.\n'); 
+end
