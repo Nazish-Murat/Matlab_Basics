@@ -1,0 +1,12 @@
+%% if-elseif-else
+
+letter = input("Enter in a lower case letter > ",'s');
+if (letter == 'a')|(letter == 'e')|(letter == 'i')...
+        |(letter == 'o')|(letter == 'u')
+    fprintf('The letter is vowel.\n');
+elseif (letter ~= 'y')
+    fprintf('The letter is consonant.\n');
+else
+    fprintf('You entered "y", which is sometimes a vowel.\n');
+end
+  
