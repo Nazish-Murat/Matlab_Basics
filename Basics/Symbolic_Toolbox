@@ -1,0 +1,13 @@
+%% Symbolic Toolbox , diffrential, integration
+clc;clear all;close all
+syms x
+y = x^2*cos(x);
+dydx1 = diff(y,x);   %first order 
+dydx2 = diff(y,x,2);   %second order 
+dydx3 = diff(y,x,3);   %third order 
+int1 = int(y,x);
+int2 = int(y,x,0,1);
+int3 = double(int(y,x,0,1));
+
+%% evaluate y at x=2
+sub = subs(y,x,2)   %subs---> subsitute
