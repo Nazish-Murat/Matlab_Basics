@@ -1,0 +1,46 @@
+%% Create and plot data set
+clc;clear all;close all; format short
+x = [0.5 1 1.5 2.5 3 3.5 4.5 5]
+y = [2 2.1 2.3 2.6 2.9 3.2 4.0 4.5]
+
+figure(1)
+plot(x,y,'o');
+xlabel('x');ylabel('y');grid on;
+
+%%  Use interp1 to determine specific values
+% what is value of y when x =0.7?
+y_lookup = interp1(x,y,0.7);
+fprintf('when x = 0.7,y = %0.3f\n',y_lookup)
+% what is value of y when y = 3?
+x_lookup = interp1(y,x,3);
+fprintf('when y = 3,y = %0.3f\n',x_lookup)
+
+%% use interp1 to complete the data set
+x_new = 0.5:0.2:5;
+y_new = interp1(x,y,x_new)
+figure(2)
+plot(x,y,'o',x_new,y_new,'x');
+xlabel('x');ylabel('y');grid on;
+
+%% use interp1 to refine the data
+x_resample = min(x):0.01:max(x);
+y_resample = interp1(x,y,x_resample)
+figure(3)
+plot(x,y,'o',x_new,y_new,'x',x_resample,y_resample,'-','Linewidth',2);
+xlabel('x');ylabel('y');grid on;
+
+%%  Use polyfit and polyval to fit the data
+% linear fit(order 1)
+p1 = polyfit(x,y,1);
+y_fit1 = polyval(p1,x);
+figure(4)
+plot(x,y,'o',x,y_fit1,'--','Linewidth',2);
+xlabel('x');ylabel('y');grid on;
+
+% parabolic fit(order 1)
+p2 = polyfit(x,y,2);
+y_fit2 = polyval(p2,x);
+figure(5)
+plot(x,y,'o',x,y_fit1,'x',x,y_fit2,'--','Linewidth',2);
+xlabel('x');ylabel('y');grid on;
+
