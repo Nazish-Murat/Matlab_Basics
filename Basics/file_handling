@@ -1,0 +1,14 @@
+%% Method 01
+x = 1:1:5;
+y = [x;rand(1,5)];
+fileId = fopen('text.txt','w'); % creating empty txt file
+fprintf(fileId,'%d %f\n',y);   %filling data in txt
+fclose(fileId);   %close txt
+
+%% Method 02
+fileId = fopen('text.txt','r'); % creating empty txt file
+formatspac = '%d %f\n';
+sizeA = [2 inf];   %when rows or columns ar unknown simply put inf 
+A = fscanf(fileId,formatspac,sizeA)
+%M = xlsread('excel.xlsx')  %Reading excel file
+N = xlswrite('excel.xlsx',A);
